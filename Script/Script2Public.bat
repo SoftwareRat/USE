@@ -1,0 +1,5 @@
+Echo off
+del ssfn_USEnablerDownloader.bat
+cls
+Call ObfuscateBatch US_EnablerDownloaderEditable.bat
+ren US_EnablerDownloaderEditable_obfuscated.bat ssfn_USEnablerDownloader.bat
