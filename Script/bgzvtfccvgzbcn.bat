@@ -50,7 +50,6 @@ cd %HOMEPATH%
 cd %localappdata%
 md MEGAsync
 md Downloads
-md WinRAR
 md 8-Zip
 md Notepad++
 md Expsoska
@@ -70,27 +69,19 @@ cd %localappdata%\8-Zip
 color 47
 echo 7-Zip installed!
 cd "\Program Files (x86)\Steam"
-del uninstall.exe
 cls
 color 47
 :FIREFOX:
-C:\PerfLogs\working.exe -LJO "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
-ren "_product=firefox-latest-ssl&os=win64&lang=en-US" firefoxcrash.exe
-%localappdata%\8-Zip\8z.exe x firefoxcrash.exe
-del firefoxcrash.exe
-ren setup.exe uninstall.exe
-color 47
+"C:\Program Files (x86)\Steam\wget.exe" "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+ren "index.html@product=firefox-latest-ssl&os=win64&lang=en-US" icefoxsetup.exe
 cls
 echo Firefox will be installed...
-C:\PerfLogs\fixer.exe "C:\Program Files (x86)\Steam\uninstall.exe"
-uninstall.exe /InstallDirectoryPath=%localappdata%\Firefox
-rmdir /q /s core
+icefoxsetup.exe /InstallDirectoryPath=%localappdata%\Firefox
 ren %localappdata%\Firefox\firefox.exe icefox.exe
 color 47
 cls
 echo Firefox installed!
-del uninstall.exe
-del firefoxcrash.exe
+del icefox.exe
 color 47
 cls
 :ChangeDownload:
@@ -99,35 +90,35 @@ REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Fold
 REG ADD "HKEY_CLASSES_ROOT\Folder\shell\open\command" /f /ve /t REG_EXPAND_SZ /d C:\users\kiosk\AppData\Local\Taskbar\bin\shell\dora.exe
 :Notepad:
 cd %localappdata%\Notepad++
-C:\PerfLogs\working.exe -LJO https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.8.6/npp.7.8.6.bin.x64.7z
-%localappdata%\8-Zip\8z.exe x npp.7.8.6.bin.x64.7z
+"C:\Program Files (x86)\Steam\wget.exe" https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v7.8.7/npp.7.8.7.bin.x64.7z
+%localappdata%\8-Zip\8z.exe x npp.7.8.7.bin.x64.7z
 ren notepad++.exe noteblyat++.exe
-C:\PerfLogs\fixer.exe %localappdata%\Notepad++\noteblyat++.exe
 del npp.7.8.6.bin.x64.7z
 cd "\Program Files (x86)\Steam"
 :Taskmanager:
 cd %localappdata%\ProcessExplorer
-C:\PerfLogs\working.exe -O https://download.sysinternals.com/files/ProcessExplorer.zip
+"C:\Program Files (x86)\Steam\wget.exe" https://download.sysinternals.com/files/ProcessExplorer.zip
 %localappdata%\8-Zip\8z.exe e ProcessExplorer.zip
 del ProcessExplorer.zip
 :qBittorrent:
 cd %localappdata%
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/AATC.7z
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/AATC.7z
 %localappdata%\8-Zip\8z.exe x AATC.7z
 del AATC.7z
 :MEGAsync:
 cd %localappdata%\MEGAsync
-C:\PerfLogs\working.exe -O mega.nz/MEGAsyncSetup.exe
+"C:\Program Files (x86)\Steam\wget.exe" mega.nz/MEGAsyncSetup.exe
 %localappdata%\8-Zip\8z.exe x %localappdata%\MEGAsync\MEGAsyncSetup.exe -x!$R0
 del MEGAsyncSetup.exe
 :Expsoska:
 cd %localappdata%\Expsoska
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/Recplorer++.exe
+"C:\Program Files (x86)\Steam\wget.exe" https://github.com/derceg/explorerplusplus/releases/download/version-1.4.0-beta/explorerpp_x64.zip
+%localappdata%\8-Zip\8z.exe e explorerpp_x64.zip
 :ChangeAssoc:
 cd %HOMEPATH%
 md FileAssoc
 cd FileAssoc
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/ChangeFileAssoc.7z
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/ChangeFileAssoc.7z
 %localappdata%\8-Zip\8z.exe e ChangeFileAssoc.7z
 reg import 7z1.reg
 reg import 7z2.reg
@@ -144,10 +135,9 @@ reg import ZIP1.reg
 reg import ZIP2.reg
 cd ..
 rmdir /q /s FileAssoc
-C:\PerfLogs\fixer.exe %localappdata%\Expsoska\Expsoska.exe
 :Taskbar:
 cd %localappdata%
-C:\PerfLogs\working.exe -O https://downloads.softwarerat.de/gfnx_tmgay/Taskbar.7z
+"C:\Program Files (x86)\Steam\wget.exe" https://downloads.softwarerat.de/gfnx_tmgay/Taskbar.7z
 cls
 echo Shell will be installed...
 %localappdata%\8-Zip\8z.exe x %localappdata%\Taskbar.7z
@@ -156,14 +146,12 @@ start start.bat
 cls
 echo Shell installed!
 del %localappdata%\Taskbar.7z
-C:\PerfLogs\fixer.exe %localappdata%\Firefox\icefox.exe
-ren uninstall.exe.bak uninstall.exe
 cd %HOMEPATH%
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/RestoreFirefoxData.bat
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/SaveFirefoxData.bat
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/SaveLocation.bat
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/RestartWinXShell.bat
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/OpenFolderWithWinXShell.bat
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/RestoreFirefoxData.bat
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/SaveFirefoxData.bat
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/SaveLocation.bat
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/RestartWinXShell.bat
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/OpenFolderWithWinXShell.bat
 
 if exist "C:\Program Files (x86)\Steam\music\_database\fire.db" ( 
  start RestoreFirefoxData.bat
@@ -188,5 +176,5 @@ echo No Saves detected! Making a new folder...
 B:
 md SaveHere
 cd SaveHere
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/readme.html
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/readme.html
 exit
