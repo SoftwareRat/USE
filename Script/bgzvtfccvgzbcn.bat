@@ -1,12 +1,52 @@
 @ECHO OFF
 color 47
+if exist "C:\Program Files (x86)\Steam\steamapps\common\Assassins Creed Origins\7za.exe" ( 
+ GOTO FirstTimeCheck
+) else (
+ GOTO SteamSession
+)
+
+:FirstTimeCheck:
+if exist "C:\Program Files (x86)\Steam\music\_database\wget.db" ( 
+ GOTO NotSteamSession
+) else (
+ GOTO FirstTime
+)
+
+:FirstTime
+cd "C:\Program Files (x86)\Steam"
+ren wget-*-win64.zip wget.zip
+if not errorlevel 1 goto SaveWgetFile
 cls
+echo The required WGET ZIP file was not found!
+echo Please make sure that you have downloaded the WGET ZIP file from the source eternallybored.org
+echo If this is the case and you still see the error message, please contact me on Discord [SoftwareRat#8089]
+pause
+exit
+
+:SaveWgetFile:
+copy "C:\Program Files (x86)\Steam\wget.zip" "C:\Program Files (x86)\Steam\music\_database\wget.db"
+GOTO NotSteamSession
+
+:SteamSession
+cls
+echo You tried to start USE without Assassins Creed Origins!
+echo This dont work!
+echo Please start the STEAM Version of Assassins Creed Origins!
+echo If this is the case and you still see the error message, please contact me on Discord [SoftwareRat#8089]
+pause
+exit
+
+:NotSteamSession:
+cls
+cd "C:\Program Files (x86)\Steam\"
+ren "C:\Program Files (x86)\Steam\steamapps\common\Assassins Creed Origins\7za.exe" "8za.exe"
+"C:\Program Files (x86)\Steam\steamapps\common\Assassins Creed Origins\8za.exe" x "C:\Program Files (x86)\Steam\music\_database\wget.db"
 B:
 md DontSaveHereDirectly
 cd DontSaveHereDirectly
 %HOMEDRIVE%
 cd %HOMEPATH%
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/gfnx_tmgay/RobloxInstaller.bat
 cd %localappdata%
 md MEGAsync
 md Downloads
@@ -18,19 +58,15 @@ md ProcessExplorer
 cd "\Program Files (x86)\Steam"
 title Unauthorized Software Enabler by SoftwareRat - Version 3.0
 color 47
-ren uninstall.exe uninstall.exe.bak
 cls
 echo 7-Zip will be installed...
 cd %localappdata%\8-Zip
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/8z/7-zip.dll
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/8z/7-zip32.dll
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/8z/7z.dll
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/8z/8zFM.exe
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/8z/8zG.exe
-C:\PerfLogs\working.exe -O http://downloads.softwarerat.de/8z/8z.exe
-C:\PerfLogs\fixer.exe %localappdata%\8-Zip\8z.exe
-C:\PerfLogs\fixer.exe %localappdata%\8-Zip\8zFM.exe
-C:\PerfLogs\fixer.exe %localappdata%\8-Zip\8zG.exe
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/8z/7-zip.dll
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/8z/7-zip32.dll
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/8z/7z.dll
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/8z/8zFM.exe
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/8z/8zG.exe
+"C:\Program Files (x86)\Steam\wget.exe" http://downloads.softwarerat.de/8z/8z.exe
 color 47
 echo 7-Zip installed!
 cd "\Program Files (x86)\Steam"
