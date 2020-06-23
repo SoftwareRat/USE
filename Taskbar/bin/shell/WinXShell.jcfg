@@ -1,0 +1,103 @@
+{
+  "JS_README":
+  {
+    "can_be_omitted_section":true,
+    "description":
+    [
+    "this is WinXShell's configure file.",
+    "you can specify some settings for desktop,taskbar,etc."
+    ]
+  },
+  "JS_JMACRO":
+  {
+    "can_be_omitted_section":true,
+    "description":
+    [
+    "specify alias name for built-in paramater names which using in jcfg file.",
+    "MACRO format:<built-in paramater name>,<alias name>,<description>",
+    "<built-in paramater name>:cann't be modified.",
+    "<alias name>: specify alias name which start with [::] for built-in paramater name",
+    "<description>: the description of built-in paramater name, cann't be modified."
+    ],
+    "JKEYNAME":
+    [
+      ["JS_JMACRO", "",           "section name. define the alias name for *i18n*"],
+      ["JS_STARTMENU", "::STARTMENU",          "section name. specify some settings for startmenu."],
+      ["JS_QUICKLAUNCH", "::QL",      "section name. specify some settings for quicklanchbar."],
+      ["wallpaperstyle", "::WP_MODE",  "property name. wallpaper's style value:0-strech(default);1-tile;2-center"],
+      ["wallpaper", "::WP",            "property name."]
+      ]
+  },
+  "JS_DAEMON":
+  {
+    "clockarea_click": {
+      "command": "##{JVAR_MODULEPATH}\\dora.exe",
+      "parameters": "-ui -jcfg wxsUI\\UI_Calendar.zip\\Calendar.jcfg"
+    },
+    "clockarea_dbclick": {
+      "command": "timedate.cpl"
+    }
+  },
+  "JS_FILEEXPLORER":
+  {
+    "#3rd_filename":"keindateimanager.exe",
+    "#padding-bottom":20
+  },
+  "JS_DESKTOP":
+  {
+    "3rd_open_arguments":"\"%s\"",
+    "cascademenu": {
+      "#WinXNew":"Directory\\Background\\shell\\WinXNew"
+    },
+    "bgcolor comment":"green for eyes",
+    "bkcolor":[139,26,26],
+    "wallpaperstyle comment":"value:0-strech(default);1-tile;2-center",
+    "::WP_MODE":,
+    "wallpaper comment":"if it is not set or be empty, will use system's wallpaper image file",
+    "::WP":"wallpaper.jpg"
+  },
+  "JS_TASKBAR":
+  {
+    "smallicon":true,
+    "userebar":false,
+    "theme":"dark",
+    "height": 40,
+    "bkcolor":[32,64,81],
+	"no_task_title":false
+  }
+  "JS_STARTMENU":
+  {
+   "nosettings":false,
+   "nobrowse":true,
+   "nobrowse_network":true,
+   "nofind":true,
+   "norun":false,
+   "nologoff":true,
+   "norestart":true,
+   "noshutdown":true,
+   "noterm":true
+   }
+
+  },
+  "::STARTMENU":
+  {
+    "commands": {
+      "reboot": {
+         "command": "Wpeutil.exe",
+         "parameters": "Reboot"
+      },
+      "shutdown": {
+         "command": "Wpeutil.exe",
+         "parameters": "Shutdown"
+      }
+    }
+  },
+  "::QL":
+  {
+    "hide_fileexplorer":false,
+	"hide_showdesktop":false,
+	"hide_fixedsep":false,
+    "3rd_startup_arguments":"",
+    "maxiconsinrow":0
+  }
+}
